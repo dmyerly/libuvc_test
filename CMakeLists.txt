@@ -74,6 +74,10 @@ if(JPEG_FOUND)
   target_link_libraries (uvc ${JPEG_LIBRARIES})
 endif(JPEG_FOUND)
 
+if(ANDROID)
+  target_link_libraries(log)
+endif(ANDROID)
+
 target_link_libraries(uvc ${LIBUSB_LIBRARY_NAMES})
 
 #add_executable(test src/test.c)
