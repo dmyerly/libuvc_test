@@ -75,7 +75,7 @@ if(JPEG_FOUND)
 endif(JPEG_FOUND)
 
 if(ANDROID)
-  target_link_libraries(log)
+  target_link_libraries(uvc log)
 endif(ANDROID)
 
 target_link_libraries(uvc ${LIBUSB_LIBRARY_NAMES})
