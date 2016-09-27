@@ -24,10 +24,10 @@ find_path(LIBUSB_INCLUDE_DIR libusb-1.0/libusb.h
 
 # Try to find JPEG using a module or pkg-config. If that doesn't work, search for the header.
 find_package(jpeg QUIET)
-unset(JPEG_FOUND)
+set(JPEG_FOUND OFF)
 if(NOT JPEG_FOUND)
   find_path(JPEG_INCLUDE_DIR jpeglib.h)
-  unset(JPEG_INCLUDE_DIR)
+  set(JPEG_INCLUDE_DIR OFF)
   if(JPEG_INCLUDE_DIR)
     set(JPEG_FOUND ON)
     set(JPEG_LIBRARIES -ljpeg)
