@@ -16,19 +16,16 @@ set(libuvc_VERSION_MINOR 0)
 set(libuvc_VERSION_PATCH 4)
 set(libuvc_VERSION ${libuvc_VERSION_MAJOR}.${libuvc_VERSION_MINOR}.${libuvc_VERSION_PATCH})
 
-if (NOT LIBUSB_LIBRARY_PATH)
-  set(LIBUSB_LIBRARY_PATH /opt/local/lib)
+if (NOT LIBUSB_LIBRARY_NAMES)
+  find_library(LIBUSB_LIBRARY_NAMES usb-1.0
+          PATHS /opt/local/lib)
 endif()
 
-if (NOT LIBUSB_HEADER_PATH)
-  set(LIBUSB_HEADER_PATH /opt/local/include)
+if (NOT LIBUSB_INCLUDE_DIR)
+  find_path(LIBUSB_INCLUDE_DIR libusb-1.0/libusb.h
+          PATHS /opt/local/include)
 endif()
 
-find_library(LIBUSB_LIBRARY_NAMES usb-1.0
-	PATHS ${LIBUSB_LIBRARY_PATH})
-
-find_path(LIBUSB_INCLUDE_DIR libusb-1.0/libusb.h
-	PATHS ${LIBUSB_HEADER_PATH})
 
 # Try to find JPEG using a module or pkg-config. If that doesn't work, search for the header.
 find_package(jpeg QUIET)
